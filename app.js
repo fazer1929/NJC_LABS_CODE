@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const sqlite3 = require("sqlite3");
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //Middle WareSetup
 app.set("view engine", "ejs");
