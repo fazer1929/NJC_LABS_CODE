@@ -3,8 +3,8 @@ const app = express();
 const sqlite3 = require("sqlite3");
 const port = 3000;
 
+//Middle WareSetup
 app.set("view engine", "ejs");
-app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -16,7 +16,7 @@ let db = new sqlite3.Database("./moviedb.db", (err) => {
   console.log("Connected to the Movie database.");
 });
 
-//Creating a Table "movie"
+//Creating a Table "movies"
 db.run(
   "create table movies(name varchar(50),actor varchar(30),actress varchar(30),director varchar(30),yearofrel int);",
   (err) => {
@@ -28,7 +28,7 @@ db.run(
   }
 );
 
-//Server Files
+//Get movies and display them
 app.get("/", async (req, res) => {
   let sql = `SELECT * FROM movies`;
   let data = [];
@@ -41,6 +41,7 @@ app.get("/", async (req, res) => {
   });
 });
 
+//Inserting Movies
 app.post("/addMovie", (req, res) => {
   const { name, actor, actress, director, yearofrel } = req.body;
   db.run(
