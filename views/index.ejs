@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <title>Movies DB</title>
+  </head>
+  <body>
+    <h1 class="text-center m-4">Movie DB</h1>
+
+    <div class="d-flex flex-row m-5 justify-content-center">
+      <form action="addMovie" method="POST" class="col-6">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            aria-describedby="name"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="actor" class="form-label">Actor</label>
+          <input
+            type="text"
+            class="form-control"
+            id="actor"
+            name="actor"
+            aria-describedby="actor"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="Actress" class="form-label">Actress</label>
+          <input
+            type="text"
+            name="actress"
+            class="form-control"
+            id="Actress"
+            aria-describedby="Actress"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="director" class="form-label">Director</label>
+          <input
+            type="text"
+            class="form-control"
+            id="director"
+            name="director"
+            aria-describedby="director"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="yearofrel" class="form-label">Year Of Release</label>
+          <input
+            required
+            type="number"
+            class="form-control"
+            id="yearofrel"
+            name="yearofrel"
+            aria-describedby="yearofrel"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="d-flex flex-column m-5 justify-content-center">
+      <h1 class="text-center m-4">Movie List</h1>
+      <div class="col-9">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Actor</th>
+              <th scope="col">Actress</th>
+              <th scope="col">Director</th>
+              <th scope="col">Year Of Release</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach(function(movie) { %>
+            <tr>
+              <td>
+                <strong><%= movie.name %></strong>
+              </td>
+              <td>
+                <strong><%= movie.actor %></strong>
+              </td>
+              <td>
+                <strong><%= movie.actress %></strong>
+              </td>
+              <td>
+                <strong><%= movie.director %></strong>
+              </td>
+              <td>
+                <strong><%= movie.yearofrel %></strong>
+              </td>
+            </tr>
+
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
